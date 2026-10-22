@@ -16,9 +16,27 @@ android {
         versionName = "1.0.0"
     }
 
-    buildFeatures { compose = true }
+    // Fix Java and Kotlin JVM target mismatch
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
     packaging {
-        resources.excludes += setOf("META-INF/NOTICE.md", "META-INF/LICENSE.md", "META-INF/NOTICE", "META-INF/LICENSE")
+        resources.excludes += setOf(
+            "META-INF/NOTICE.md",
+            "META-INF/LICENSE.md",
+            "META-INF/NOTICE",
+            "META-INF/LICENSE"
+        )
     }
 }
 
